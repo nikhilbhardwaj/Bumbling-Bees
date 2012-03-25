@@ -18,7 +18,7 @@ namespace BumbleBeeApp
     public class Alphabet
     {
         public Image _img;
-        static const string basePath = @"Images\"; 
+        static const string basePath = @"Images\Letter "; 
 
         public Alphabet(char randomChar)
         {

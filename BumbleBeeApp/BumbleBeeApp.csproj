@@ -91,12 +91,36 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\Letter A.png" />
+    <Resource Include="Images\Letter B.png" />
+    <Resource Include="Images\Letter C.png" />
+    <Resource Include="Images\Letter D.png" />
+    <Resource Include="Images\Letter E.png" />
+    <Resource Include="Images\Letter F.png" />
+    <Resource Include="Images\Letter G.png" />
+    <Resource Include="Images\Letter H.png" />
+    <Resource Include="Images\Letter I.png" />
+    <Resource Include="Images\Letter J.png" />
+    <Resource Include="Images\Letter K.png" />
+    <Resource Include="Images\Letter L.png" />
+    <Resource Include="Images\Letter M.png" />
+    <Resource Include="Images\Letter N.png" />
+    <Resource Include="Images\Letter O.png" />
+    <Resource Include="Images\Letter P.png" />
+    <Resource Include="Images\Letter Q.png" />
+    <Resource Include="Images\Letter R.png" />
+    <Resource Include="Images\Letter S.png" />
+    <Resource Include="Images\Letter T.png" />
+    <Resource Include="Images\Letter U.png" />
+    <Resource Include="Images\Letter V.png" />
+    <Resource Include="Images\Letter W.png" />
+    <Resource Include="Images\Letter X.png" />
+    <Resource Include="Images\Letter Y.png" />
+    <Resource Include="Images\Letter Z.png" />
     <Content Include="raw_dictionary.txt" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
