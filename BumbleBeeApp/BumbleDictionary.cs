@@ -38,7 +38,7 @@ namespace BumbleBeeApp
         }
 
         //Methods to generate random alphabets
-        public static char AlphabetSetGenerator(byte numberOfAlphabets = 127)   //this will generate any number of random alphabets
+        public static char RandomAlphabetGenerator(byte numberOfAlphabets = 127)   //this will generate any number of random alphabets
         {
             byte b = 0, c;
             byte[] arr = new byte[3];
@@ -84,16 +84,10 @@ namespace BumbleBeeApp
 
         private static byte AsciiGen()
         {
-            Random rnd = new Random();
-            int i;
-
-
-
-            i = rnd.Next(99);   //generates a random +ve integer less than 99
+            int i = new Random().Next(99);   //generates a random +ve integer less than 99
 
             //based on cumilitive frequencies it will select and
-            //return a byte value which is the ascii equivalent of the alphabet
-
+            //returns a byte value which is the ascii equivalent of the alphabet
             if (i >= 0 && i <= 9)
                 return 65;
             else if (i > 9 && i <= 11)
