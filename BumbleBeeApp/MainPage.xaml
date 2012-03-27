@@ -22,14 +22,48 @@
         </Grid.RowDefinitions>
 
         <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+        <StackPanel x:Name="TitlePanel" Margin="12,0,0,0" Height="27" VerticalAlignment="Bottom">
+            <Image Height="0" Name="image23" Stretch="Fill" Width="70" />
             <TextBlock x:Name="ApplicationTitle" Text="Bumbling Bees" Style="{StaticResource PhoneTextNormalStyle}"/>
         </StackPanel>
 
         <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Margin="-10,1,-11,-11" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="308*" />
+                <ColumnDefinition Width="396*" />
+            </Grid.ColumnDefinitions>
+            <Grid.Background>
+                <ImageBrush ImageSource="/BumbleBeeApp;component/Images/rainbow_clouds.jpg" />
+            </Grid.Background>
             <!-- Debo, Remove this when you start -->
-            <TextBlock x:Name="TemporaryMessage" Text="The design is for you to layout debo." Style="{StaticResource PhoneTextLargeStyle}"/>
+            <Image Height="72" HorizontalAlignment="Left" Margin="327,0,0,0" Name="image1" Stretch="Fill" VerticalAlignment="Top" Width="83" Source="/BumbleBeeApp;component/Images/smiling_sun.png" Grid.Column="1" />
+            <Image Height="50" HorizontalAlignment="Left" Margin="16,429,0,0" Name="image2" Stretch="Fill" VerticalAlignment="Top" Width="48" Source="/BumbleBeeApp;component/Images/honey_pot.png" />
+            <Image Height="72" HorizontalAlignment="Left" Name="image12" Stretch="Fill" VerticalAlignment="Top" Width="90" Source="/BumbleBeeApp;component/Images/greet_bee.png" Margin="9,0,0,0" />
+            <Image Height="74" HorizontalAlignment="Left" Margin="-2,57,0,0" Name="image13" Stretch="Fill" VerticalAlignment="Top" Width="145" Source="/BumbleBeeApp;component/Images/score_board.png" />
+            <Image Height="46" HorizontalAlignment="Left" Margin="96,5,0,0" Name="image14" Stretch="Fill" VerticalAlignment="Top" Width="37" Source="/BumbleBeeApp;component/Images/lives.png" />
+            <Image Height="46" HorizontalAlignment="Right" Margin="0,5,157,0" Name="image15" Source="/BumbleBeeApp;component/Images/lives.png" Stretch="Fill" VerticalAlignment="Top" Width="37" />
+            <Image Height="46" HorizontalAlignment="Left" Margin="173,5,0,0" Name="image16" Source="/BumbleBeeApp;component/Images/lives.png" Stretch="Fill" VerticalAlignment="Top" Width="37" />
+            <Image Height="101" HorizontalAlignment="Left" Margin="163,220,0,0" Name="image17" Stretch="Fill" VerticalAlignment="Top" Width="122" Source="/BumbleBeeApp;component/Images/hive.png" />
+            <Image Height="68" HorizontalAlignment="Left" Margin="17,-5,0,0" Name="image22" Stretch="Fill" VerticalAlignment="Top" Width="125" Source="/BumbleBeeApp;component/Images/bee_logo.png" Grid.Column="1" />
+            <Image Height="39" HorizontalAlignment="Left" Margin="113,33,0,0" Name="image24" Stretch="Fill" VerticalAlignment="Top" Width="88" Source="/BumbleBeeApp;component/Images/bee_title.png" Grid.Column="1" />
+            <TextBlock Height="38" HorizontalAlignment="Left" Margin="302,34,0,0" Name="textBlock1" Text="Bumbling" VerticalAlignment="Top" Width="146" Foreground="#FF141414" FontStyle="Italic" FontWeight="Bold" FontFamily="Times New Roman" FontSize="32" TextAlignment="Center" Grid.ColumnSpan="2" />
+            <Image Grid.Column="1" Height="90" HorizontalAlignment="Left" Margin="312,392,0,0" Name="image25" Stretch="Fill" VerticalAlignment="Top" Width="95" Source="/BumbleBeeApp;component/Images/fill_me.png" />
+            <Image Height="50" HorizontalAlignment="Left" Margin="79,429,0,0" Name="image3" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" />
+            <Image Height="50" HorizontalAlignment="Right" Margin="0,429,139,0" Name="image4" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" />
+            <Image Height="50" HorizontalAlignment="Right" Margin="0,429,78,0" Name="image5" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" />
+            <Image Height="50" HorizontalAlignment="Right" Margin="0,429,15,0" Name="image6" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" />
+            <Image Height="50" HorizontalAlignment="Right" Margin="0,429,374,0" Name="image7" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" Grid.ColumnSpan="2" />
+            <Image Height="50" HorizontalAlignment="Left" Margin="120,429,0,0" Name="image8" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" Grid.Column="1" />
+            <Image Height="50" HorizontalAlignment="Right" Margin="0,429,313,0" Name="image9" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" Grid.Column="1" />
+            <Image Height="51" HorizontalAlignment="Right" Margin="0,429,194,0" Name="image10" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" Grid.Column="1" />
+            <Image Height="50" HorizontalAlignment="Right" Margin="0,429,132,0" Name="image11" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" Grid.Column="1" />
+            <TextBlock Height="30" Margin="28,74,201,0" Name="textBlock2" Text="SCORE" VerticalAlignment="Top" />
+            <TextBlock Height="17" HorizontalAlignment="Left" Margin="18,46,0,0" Name="textBlock3" Text="howdy bee!!!" VerticalAlignment="Top" Width="71" FontSize="12" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="ExtraBlack" Foreground="#FF1A1919" TextAlignment="Center" />
+            <Image Height="101" HorizontalAlignment="Left" Margin="4,105,0,0" Name="image18" Source="/BumbleBeeApp;component/Images/hive.png" Stretch="Fill" VerticalAlignment="Top" Width="122" Grid.Column="1" />
+            <Image Height="101" HorizontalAlignment="Left" Margin="132,176,0,0" Name="image19" Source="/BumbleBeeApp;component/Images/hive.png" Stretch="Fill" VerticalAlignment="Top" Width="122" Grid.Column="1" />
+            <Image Height="101" HorizontalAlignment="Left" Margin="93,290,0,0" Name="image20" Source="/BumbleBeeApp;component/Images/hive.png" Stretch="Fill" VerticalAlignment="Top" Width="122" Grid.Column="1" />
+            <Image Height="101" HorizontalAlignment="Left" Margin="293,212,0,0" Name="image21" Source="/BumbleBeeApp;component/Images/hive.png" Stretch="Fill" VerticalAlignment="Top" Width="122" Grid.ColumnSpan="2" />
         </Grid>
     </Grid>
  

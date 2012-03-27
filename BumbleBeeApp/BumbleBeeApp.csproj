@@ -117,6 +117,16 @@
     <Resource Include="Images\Letter X.png" />
     <Resource Include="Images\Letter Y.png" />
     <Resource Include="Images\Letter Z.png" />
+    <Resource Include="Images\rainbow_clouds.jpg" />
+    <Resource Include="Images\smiling_sun.png" />
+    <Resource Include="Images\honey_pot.png" />
+    <Resource Include="Images\greet_bee.png" />
+    <Resource Include="Images\score_board.png" />
+    <Resource Include="Images\lives.png" />
+    <Resource Include="Images\hive.png" />
+    <Resource Include="Images\bee_logo.png" />
+    <Resource Include="Images\bee_title.png" />
+    <Resource Include="Images\fill_me.png" />
     <Content Include="raw_dictionary.txt" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
