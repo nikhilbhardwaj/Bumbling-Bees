@@ -28,7 +28,7 @@ namespace BumbleBeeApp
         {
             theGame = new BumbleGame("Nikhil");
             //To correctly place elements in the hives
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < 15; ++i)
             {
                     Alphabet alpha = new Alphabet(BumbleDictionary.RandomAlphabetGenerator());
                     theGame.wordCloud.Add(alpha);
