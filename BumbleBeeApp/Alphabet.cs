@@ -18,9 +18,10 @@ namespace BumbleBeeApp
     public class Alphabet
     {
         public Image _img;
-        static string basePath = @"Images\";
-        //line below gives some error
-        //static const string basePath = @"Images\Letter "; 
+        const string basePath = @"Images\Letter ";
+        static int[,] hiveIndices = new int[,] {
+                                        {200,200},{200,250},{200,200}
+        };
 
         public Alphabet(char randomChar)
         {
@@ -30,12 +31,22 @@ namespace BumbleBeeApp
             _img.Source = (ImageSource)convertor.ConvertFromString(basePath + randomChar + ".png");
             _img.Width = _img.Height = 50;
             //TODO Change the default postition
-            _img.Margin = new Thickness(23, 17, 509, 291);
-            _img.RenderTransform = new TranslateTransform();
-            
+            _img.Margin = new Thickness(-200,-400,200,400);
+            _img.RenderTransform = new TranslateTransform(); 
         }
 
         public char CurrentAlphabet { get; set; }
         //More properties will be added when I can think of something useful, do add something you see fit
+
+        //These two methods are meant to place an element into position
+        public static int HiveXCoordinate(int hiveIndex)
+        {
+            return hiveIndices[hiveIndex, 0];
+        }
+
+        public static int HiveYCoordinate(int hiveIndex)
+        {
+            return hiveIndices[hiveIndex, 1];
+        }
     }
 }

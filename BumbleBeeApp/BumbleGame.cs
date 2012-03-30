@@ -14,7 +14,7 @@ namespace BumbleBeeApp
 {
     public class BumbleGame
     {
-        private List<Alphabet> wordCloud, userWord;
+        public List<Alphabet> wordCloud, userWord;
         public int CurrentLevel { get; set; }
         public int UserScore { get; set; }
         public string UserName;
