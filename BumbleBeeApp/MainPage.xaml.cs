@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using System.Threading;
 
 namespace BumbleBeeApp
 {
@@ -26,15 +27,15 @@ namespace BumbleBeeApp
         //to set up the initial user interface
         public void InitializeGui()
         {
+            MessageBox.Show("Enter Your Name");
             theGame = new BumbleGame("Nikhil");
             //To correctly place elements in the hives
             for (int i = 0; i < 15; ++i)
             {
                     Alphabet alpha = new Alphabet(BumbleDictionary.RandomAlphabetGenerator());
                     theGame.wordCloud.Add(alpha);
-                    Canvas.SetZIndex(this, 999);
                     PlaceAlphabetOnScreen(ref alpha, i);
-                    Canvas.SetZIndex(this, 0);
+                    Thread.Sleep(1000);
             }
         }
 

@@ -21,9 +21,11 @@ namespace BumbleBeeApp
         const string basePath = @"Images\Letter ";
         static int[,] hiveIndices = new int[,] {
                                         {200,362},{250,370},{213,410} , {400,330} , {380,282} , {437, 295} , {325, 405} , {379,413} ,{343,453} , 
-                                        {450,382},{510,395},{468,430} , {585,330} , {645,340} , {603,375},
+                                        {450,382},{510,395},{468,430} , {585,330} , {645,340} , {603,375}
+        };
 
-                                        //i m putting the coordinates for the honey pots here as well
+        //i m putting the coordinates for the honey pots here as well
+        static int[,] honeyPot = new int[,]{
                                         {65,580} , {125, 580} , {185,580} , {245, 580} , {305, 580} ,
                                         {365, 580} , {425, 580} , {485, 580} , {545, 580} , {605,580}
 
