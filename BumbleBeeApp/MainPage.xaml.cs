@@ -23,8 +23,8 @@ namespace BumbleBeeApp
         private double xInt, yInt, xFin, yFin;
         //counter for placing the alphabets
         byte potNumber = 0 ;
-        int indice = 0;
-        List<int> lstIndices = new List<int>(7);
+        int index = 0;
+        List<int> lstIndices = new List<int>();
 
         public MainPage()
         {
@@ -99,7 +99,7 @@ namespace BumbleBeeApp
             //taking initial coordinates
             xInt = e.GetPosition(null).X;
             yInt = e.GetPosition(null).Y;
-            indice = getIndice(xInt,yInt );
+            index = getIndice(xInt,yInt);
 
         }
 
@@ -149,11 +149,13 @@ namespace BumbleBeeApp
                     transform.Y -= (yFin - 20);
                     transform.Y += Alphabet.honeyPot[potNumber, 1];
                     potNumber++;
+
                     //added to list only if its a valid drag
-                    lstIndices.Add(indice);
-                    
+                    lstIndices.Add(index);
+
                     //showing the indices
-                    MessageBox.Show(indice.ToString());
+                    MessageBox.Show(index.ToString());
+
 
                     
 
@@ -236,16 +238,16 @@ namespace BumbleBeeApp
             
             if (BumbleDictionary.IsValidWord(wordToCheck))
             {
-                theGame.IncrementScore(BumbleDictionary.WordScore(wordToCheck));
+                theGame.UserScore += BumbleDictionary.WordScore(wordToCheck);
                 MessageBox.Show(wordToCheck + " is a valid word with a score of " + BumbleDictionary.WordScore(wordToCheck));
                 MessageBox.Show("current score " + theGame.UserScore);
-                theGame.userWord.Clear();
                 //To delete the alphabets from the screen and generate the new ones
                 foreach (Image alpha in theGame.userWord)
                 {
                     //Deletes the imags from the screen
                     alpha.Source = null;
                 }
+                theGame.userWord.Clear();
             }
             else
             {
