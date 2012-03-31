@@ -19,15 +19,15 @@ namespace BumbleBeeApp
         public List<Image> userWord;
         private int _userScore;
         public int CurrentLevel { get; set; }
-        public string UserScore {
+        public int UserScore {
             get
             {
-                return _userScore.ToString();
+                return _userScore;
             }
             set
             {
                 //Implementation for the Changed notification
-                _userScore = Convert.ToInt32(value);
+                _userScore = value;
                 NotifyPropertyChanged("UserScore");
             }
         }
@@ -45,18 +45,13 @@ namespace BumbleBeeApp
             return tmpWord;
         }
 
-        public void IncrementScore(int val)
-        {
-            _userScore += val;
-            NotifyPropertyChanged("UserScore");
-        }
         //Default constructor to create a new instance of the game
         public BumbleGame(string username)
         {
             wordCloud = new List<Alphabet>(15);
             userWord = new List<Image>();
             CurrentLevel = 1;
-            UserScore = "0";
+            UserScore = 0;
             UserName = username;
         }
 
