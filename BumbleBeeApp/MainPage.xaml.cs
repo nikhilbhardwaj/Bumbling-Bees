@@ -223,12 +223,18 @@ namespace BumbleBeeApp
             
             if (BumbleDictionary.IsValidWord(wordToCheck))
             {
-                MessageBox.Show(wordToCheck + " is a valid word");
-                //Add to the user score
+                theGame.UserScore += BumbleDictionary.WordScore(wordToCheck);
+                MessageBox.Show(wordToCheck + " is a valid word with a score of " + BumbleDictionary.WordScore(wordToCheck));
             }
             else
             {
                 MessageBox.Show(wordToCheck + " isn't valid");
+                foreach (Image alpha in theGame.userWord)
+                {
+                    //Deletes the imags from the screen
+                    alpha.Source = null;
+                }
+                theGame.userWord.Clear();
             }
         }
     }
