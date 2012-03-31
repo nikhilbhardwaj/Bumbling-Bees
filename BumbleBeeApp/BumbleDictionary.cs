@@ -201,9 +201,6 @@ namespace BumbleBeeApp
 
                 }
                 arrBonus[i] = asciiEq;
-
-                //the message box shows th working here
-                MessageBox.Show(str[i].ToString() + "   " + points.ToString());
             }
             //returning the score
             return points * lenWord + bonus;

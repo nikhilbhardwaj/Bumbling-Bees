@@ -58,8 +58,8 @@
             <Image Height="50" HorizontalAlignment="Left" Margin="24,429,0,0" Name="image9" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" Grid.Column="1" />
             <Image Height="51" HorizontalAlignment="Right" Margin="0,429,271,0" Name="image10" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" Grid.Column="1" />
             <Image Height="50" HorizontalAlignment="Right" Margin="0,429,210,0" Name="image11" Source="/BumbleBeeApp;component/Images/honey_pot.png" Stretch="Fill" VerticalAlignment="Top" Width="48" Grid.Column="1" />
-            <TextBlock Height="30" Margin="28,74,201,0" Name="textBlock2" Text="SCORE" VerticalAlignment="Top" />
-            <TextBlock Height="17" HorizontalAlignment="Left" Margin="18,46,0,0" Name="textBlock3" Text="howdy bee!!!" VerticalAlignment="Top" Width="71" FontSize="12" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="ExtraBlack" Foreground="#FF1A1919" TextAlignment="Center" />
+            <TextBlock Margin="28,74,242,386" Name="scoreTextBlock" Text="SCORE" DataContext="{Binding UserScore}" />
+            <TextBlock Height="17" HorizontalAlignment="Left" Margin="18,46,0,0" Name="textBlock3" Text="" VerticalAlignment="Top" Width="71" FontSize="12" FontFamily="Times New Roman" FontStyle="Italic" FontWeight="ExtraBlack" Foreground="#FF1A1919" TextAlignment="Center" />
             <Image Height="101" HorizontalAlignment="Left" Margin="329,104,0,0" Name="image18" Source="/BumbleBeeApp;component/Images/hive.png" Stretch="Fill" VerticalAlignment="Top" Width="122" Grid.ColumnSpan="2" />
             <Image Height="101" HorizontalAlignment="Left" Margin="173,148,0,0" Name="image19" Source="/BumbleBeeApp;component/Images/hive.png" Stretch="Fill" VerticalAlignment="Top" Width="122" Grid.Column="1" />
             <Image Height="101" HorizontalAlignment="Left" Margin="41,201,0,0" Name="image20" Source="/BumbleBeeApp;component/Images/hive.png" Stretch="Fill" VerticalAlignment="Top" Width="122" Grid.Column="1" />

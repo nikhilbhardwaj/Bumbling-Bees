@@ -9,15 +9,28 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace BumbleBeeApp
 {
-    public class BumbleGame
+    public class BumbleGame : INotifyPropertyChanged
     {
         public List<Alphabet> wordCloud;
         public List<Image> userWord;
+        private int _userScore;
         public int CurrentLevel { get; set; }
-        public int UserScore { get; set; }
+        public string UserScore {
+            get
+            {
+                return _userScore.ToString();
+            }
+            set
+            {
+                //Implementation for the Changed notification
+                _userScore = Convert.ToInt32(value);
+                NotifyPropertyChanged("UserScore");
+            }
+        }
         public string UserName;
 
         //returns the word that the user has generated
@@ -32,14 +45,29 @@ namespace BumbleBeeApp
             return tmpWord;
         }
 
+        public void IncrementScore(int val)
+        {
+            _userScore += val;
+            NotifyPropertyChanged("UserScore");
+        }
         //Default constructor to create a new instance of the game
         public BumbleGame(string username)
         {
             wordCloud = new List<Alphabet>(15);
             userWord = new List<Image>();
             CurrentLevel = 1;
-            UserScore = 0;
+            UserScore = "0";
             UserName = username;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        void NotifyPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
     }
 }
