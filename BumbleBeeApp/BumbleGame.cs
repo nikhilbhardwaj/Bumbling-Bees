@@ -14,7 +14,8 @@ namespace BumbleBeeApp
 {
     public class BumbleGame
     {
-        public List<Alphabet> wordCloud, userWord;
+        public List<Alphabet> wordCloud;
+        public List<Image> userWord;
         public int CurrentLevel { get; set; }
         public int UserScore { get; set; }
         public string UserName;
@@ -24,9 +25,9 @@ namespace BumbleBeeApp
         {
             //Should be replaced with some equivalent of the stringbuffer for c#
             string tmpWord = "";
-            foreach(Alphabet alpha in userWord)
+            foreach(Image alpha in userWord)
             {
-                tmpWord += alpha.CurrentAlphabet;
+                tmpWord += alpha.Tag.ToString();
             }
             return tmpWord;
         }
@@ -35,7 +36,7 @@ namespace BumbleBeeApp
         public BumbleGame(string username)
         {
             wordCloud = new List<Alphabet>(15);
-            userWord = new List<Alphabet>(4);
+            userWord = new List<Image>();
             CurrentLevel = 1;
             UserScore = 0;
             UserName = username;

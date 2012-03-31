@@ -21,12 +21,6 @@ namespace BumbleBeeApp
         // Constructor
         //coordinates initital and final
         private double xInt, yInt, xFin, yFin;
-        //these are the coordinates that fit the horizontal alignment of the screen
-        private static double[,] honeyPot = new double[,]{
-                                        {65,450} , {125, 450} , {185,450} , {245, 450} , {305, 450} ,
-                                        {365, 450} , {425, 450} , {485, 450} , {545, 450} , {605,450}
-
-        };
         //counter for placing the alphabets
         byte potNumber = 0;
 
@@ -40,49 +34,48 @@ namespace BumbleBeeApp
         //to set up the initial user interface
         public void InitializeGui()
         {
-            MessageBox.Show("Enter Your Name");
+            // TODO get the users name and place it in the appropriate place MessageBox.Show("Enter Your Name");
             theGame = new BumbleGame("Nikhil");
             //To correctly place elements in the hives
             for (int i = 0; i < 15; ++i)
             {
                     Alphabet alpha = new Alphabet(BumbleDictionary.RandomAlphabetGenerator());
                     theGame.wordCloud.Add(alpha);
-                    PlaceAlphabetOnScreen(ref alpha, i);
-                    Thread.Sleep(1000);
+                    PlaceAlphabetOnScreen(ref alpha._img, Alphabet.hiveIndices, i);
             }
         }
 
-        public void PlaceAlphabetOnScreen(ref Alphabet alpha, int hiveIndex)
+        public void PlaceAlphabetOnScreen(ref Image alpha, int[,] lookUp, int hiveIndex)
         {
             //setup the action listeners
-            var gestureListener = GestureService.GetGestureListener(alpha._img);
+            var gestureListener = GestureService.GetGestureListener(alpha);
             gestureListener.DragDelta += OnDragDelta;
             gestureListener.GestureCompleted += OnGestureCompleted;
             gestureListener.GestureBegin += OnGestureBegin;
-            ContentPanel.Children.Add(alpha._img); 
+            ContentPanel.Children.Add(alpha);
             //setup the animation
-            Storyboard sb = CreateAndApplyStoryboard(alpha._img, hiveIndex);
+            Storyboard sb = CreateAndApplyStoryboard(alpha, lookUp, hiveIndex);
             sb.Begin();
         }
 
-        //Places the alphabet appropriately in either the hive or the honey pots
-        public Storyboard CreateAndApplyStoryboard(UIElement targetElement, int elementIndex)
+        //Places the alphabet appropriately in either the hives or honey pots
+        public Storyboard CreateAndApplyStoryboard(UIElement targetElement, int [,] lookUp,int elementIndex)
         {
             Storyboard sb = new Storyboard();
 
             DoubleAnimation animationX = new DoubleAnimation
             {
                 From = 0,
-                To = Alphabet.HiveXCoordinate(elementIndex),
-                Duration = new Duration(TimeSpan.FromSeconds(1)),
+                To = lookUp[elementIndex,0],
+                Duration = new Duration(TimeSpan.FromMilliseconds(500)),
                 EasingFunction = new ExponentialEase()
             };
 
             DoubleAnimation animationY = new DoubleAnimation
             {
                 From = 0,
-                To = Alphabet.HiveYCoordinate(elementIndex),
-                Duration = new Duration(TimeSpan.FromSeconds(1)),
+                To = lookUp[elementIndex,1],
+                Duration = new Duration(TimeSpan.FromMilliseconds(500)),
                 EasingFunction = new ExponentialEase()
             };
 
@@ -138,19 +131,18 @@ namespace BumbleBeeApp
             //
             if (((e.GetPosition(null).X) < 640) && ((e.GetPosition(null).Y) > 385) && ((e.GetPosition(null).Y) != 480) )
             {
-                //TODO return the value of the alphabet
+                //returns the value of the alphabet
                 //place it on Honey Pot
-
-                MessageBox.Show("successful drag" + (e.GetPosition(null).X).ToString() + "\t" + (e.GetPosition(null).Y).ToString() );
+                theGame.userWord.Add(image);
                 //I'm working on this part
                 //still trying to refine it some more...
 
                 if (!(xInt < 640 && yInt > 385))
                 {
                     transform.X -= (xFin - 30);
-                    transform.X += honeyPot[potNumber, 0];
+                    transform.X += Alphabet.honeyPot[potNumber, 0];
                     transform.Y -= (yFin - 20);
-                    transform.Y += honeyPot[potNumber, 1];
+                    transform.Y += Alphabet.honeyPot[potNumber, 1];
                     potNumber++;
                 }
                 else
@@ -223,6 +215,21 @@ namespace BumbleBeeApp
             }
 
             
+        }
+
+        private void image25_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            string wordToCheck = theGame.GetUserWord();
+            
+            if (BumbleDictionary.IsValidWord(wordToCheck))
+            {
+                MessageBox.Show(wordToCheck + " is a valid word");
+                //Add to the user score
+            }
+            else
+            {
+                MessageBox.Show(wordToCheck + " isn't valid");
+            }
         }
     }
 }

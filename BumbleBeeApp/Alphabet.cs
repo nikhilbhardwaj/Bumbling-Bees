@@ -19,26 +19,25 @@ namespace BumbleBeeApp
     {
         public Image _img;
         const string basePath = @"Images\Letter ";
-        static int[,] hiveIndices = new int[,] {
+        public static int[,] hiveIndices = new int[,] {
                                         {200,362},{250,370},{213,410} , {400,330} , {380,282} , {437, 295} , {325, 405} , {379,413} ,{343,453} , 
                                         {450,382},{510,395},{468,430} , {585,330} , {645,340} , {603,375}
         };
 
         //i m putting the coordinates for the honey pots here as well
-        static int[,] honeyPot = new int[,]{
-                                        {65,580} , {125, 580} , {185,580} , {245, 580} , {305, 580} ,
-                                        {365, 580} , {425, 580} , {485, 580} , {545, 580} , {605,580}
-
+        public static int[,] honeyPot = new int[,]{
+                                        {5,450}, {65,450} , {125, 450} , {185,450} , {245, 450} , {305, 450} ,
+                                        {365, 450} , {425, 450} , {485, 450} , {545, 450}
         };
 
         public Alphabet(char randomChar)
         {
             CurrentAlphabet = randomChar;
             _img = new Image();
+            _img.Tag = CurrentAlphabet;
             ImageSourceConverter convertor = new ImageSourceConverter();
             _img.Source = (ImageSource)convertor.ConvertFromString(basePath + randomChar + ".png");
             _img.Width = _img.Height = 35;
-            //TODO Change the default postition
             _img.Margin = new Thickness(-200,-400,200,400);
             _img.RenderTransform = new TranslateTransform(); 
         }
