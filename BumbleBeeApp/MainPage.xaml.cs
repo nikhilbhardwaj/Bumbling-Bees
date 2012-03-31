@@ -28,7 +28,7 @@ namespace BumbleBeeApp
         {
             InitializeComponent();
             InitializeGui();
-
+            DataContext = theGame;
         }
 
         //to set up the initial user interface
@@ -36,6 +36,7 @@ namespace BumbleBeeApp
         {
             // TODO get the users name and place it in the appropriate place MessageBox.Show("Enter Your Name");
             theGame = new BumbleGame("Nikhil");
+            textBlock3.Text = "howdy " + theGame.UserName + "!!!";
             //To correctly place elements in the hives
             for (int i = 0; i < 15; ++i)
             {
@@ -223,12 +224,21 @@ namespace BumbleBeeApp
             
             if (BumbleDictionary.IsValidWord(wordToCheck))
             {
-                theGame.UserScore += BumbleDictionary.WordScore(wordToCheck);
+                theGame.IncrementScore(BumbleDictionary.WordScore(wordToCheck));
                 MessageBox.Show(wordToCheck + " is a valid word with a score of " + BumbleDictionary.WordScore(wordToCheck));
+                MessageBox.Show("current score " + theGame.UserScore);
+                theGame.userWord.Clear();
+                //To delete the alphabets from the screen and generate the new ones
+                foreach (Image alpha in theGame.userWord)
+                {
+                    //Deletes the imags from the screen
+                    alpha.Source = null;
+                }
             }
             else
             {
                 MessageBox.Show(wordToCheck + " isn't valid");
+                //Send the words to the hives again
                 foreach (Image alpha in theGame.userWord)
                 {
                     //Deletes the imags from the screen
