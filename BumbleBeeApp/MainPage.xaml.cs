@@ -23,8 +23,8 @@ namespace BumbleBeeApp
         private double xInt, yInt, xFin, yFin;
         //counter for placing the alphabets
         byte potNumber = 0 ;
-        int indice = 0;
-        List<int> lstIndices = new List<int>(7);
+        int index = 0;
+        List<int> lstIndices = new List<int>();
 
         public MainPage()
         {
@@ -99,7 +99,7 @@ namespace BumbleBeeApp
             //taking initial coordinates
             xInt = e.GetPosition(null).X;
             yInt = e.GetPosition(null).Y;
-            indice = getIndice(xInt,yInt );
+            index = getIndice(xInt,yInt);
 
         }
 
@@ -149,8 +149,8 @@ namespace BumbleBeeApp
                     transform.Y -= (yFin - 20);
                     transform.Y += Alphabet.honeyPot[potNumber, 1];
                     potNumber++;
-                    lstIndices.Add(indice);
-                    MessageBox.Show(indice.ToString());
+                    lstIndices.Add(index);
+                    MessageBox.Show(index.ToString());
 
                     
 
