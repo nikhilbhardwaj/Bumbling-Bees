@@ -143,7 +143,19 @@ namespace BumbleBeeApp
                     transform.Y -= (yFin - 20);
                     transform.Y += Alphabet.honeyPot[potNumber, 1];
                     potNumber++;
+
+                    //added to list only if its a valid drag
                     lstIndices.Add(index);
+<<<<<<< HEAD
+=======
+
+                    //showing the indices
+                    MessageBox.Show(index.ToString());
+
+
+                    
+
+>>>>>>> 5f9f8283d44b545be9a48c9dac3afd24cb3efa70
                 }
                 else
                 {
@@ -258,69 +270,76 @@ namespace BumbleBeeApp
         //Method to find the index of the empty hives
         private int GetIndex(double x, double y)
         { 
+<<<<<<< HEAD
             //{200,362},{250,370},{213,410} , {400,330} , {380,282} , {437, 295} , {325, 405} , {379,413} ,{343,453} , 
             //                            {450,382},{510,395},{468,430} , {585,330} , {645,340} , {603,375}
 
+=======
+            
+            //the indices with their locations are
+            //size of indice  width = 60 , && height = 50
+            
+>>>>>>> 5f9f8283d44b545be9a48c9dac3afd24cb3efa70
             if (x >= 144 && x < 204 && y >=180  && y < 230)
             {
                 return 0;
-            }
+            }// 0 (144,180)
             else if (x >= 205 && x <245  && y >=180  && y <230 )
             {
                 return 1;
-            }
+            }// 1 (205,180)
             else if (x >=174  && x <234  && y >=230  && y <280 )
             {
                 return 2;
-            }
+            }// 2 (174,230)
             else if (x >=272  && x <332  && y >=223  && y <273 )
             {
                 return 3;
-            }
+            }// 3 (272,223)
             else if (x >=332  && x <392  && y >=223  && y <273 )
             {
                 return 4;
-            }
+            }// 4 (332,223)
             else if (x >=302  && x <363  && y >=273  && y <323 )
             {
                 return 5;
-            }
+            }// 5 (302,273)
             else if (x >=329  && x <389  && y >= 104 && y <154 )
             {
                 return 6;
-            }
+            }// 6 (329,104)
             else if (x >=389  && x <449  && y >=104  && y <154 )
             {
                 return 7;
-            }
+            }// 7 (389,104)
             else if (x >=359  && x <419  && y >=154  && y <205 )
             {
                 return 8;
-            }
+            }// 8 (359,154)
             else if (x >=372  && x <432  && y >=201  && y <251 )
             {
                 return 9;
-            }
+            }// 9 (372,201)
             else if (x >=432  && x <492  && y >=201  && y <251 )
             {
                 return 10;
-            }
+            }// 10 (432,201)
             else if (x >=402  && x <462  && y >=251  && y <302 )
             {
                 return 11;
-            }
+            }// 11 (402,251)
             else if (x >=504  && x <564  && y >=148  && y <198 )
             {
                 return 12;
-            }
+            }// 12 (504,148)
             else if (x >=564  && x <624  && y >=148  && y <198 )
             {
                 return 13;
-            }
+            }// 13 (564,148)
             else if (x >=534  && x <594  && y >=198  && y <249 )
             {
                 return 14;
-            }
+            }// 14 (534,198)
             else
                 return -99;   
         }
