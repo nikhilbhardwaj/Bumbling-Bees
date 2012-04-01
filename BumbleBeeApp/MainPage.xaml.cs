@@ -44,11 +44,11 @@ namespace BumbleBeeApp
             {
                     Alphabet alpha = new Alphabet(BumbleDictionary.RandomAlphabetGenerator());
                     theGame.wordCloud.Add(alpha);
-                    PlaceAlphabetOnScreen(ref alpha._img, Alphabet.hiveIndices, i);
+                    PlaceAlphabetOnScreen(ref alpha._img, Alphabet.hiveIndices, i, 1);
             }
         }
 
-        public void PlaceAlphabetOnScreen(ref Image alpha, int[,] lookUp, int hiveIndex)
+        public void PlaceAlphabetOnScreen(ref Image alpha, int[,] lookUp, int hiveIndex, int millis)
         {
             //setup the action listeners
             var gestureListener = GestureService.GetGestureListener(alpha);
@@ -57,12 +57,12 @@ namespace BumbleBeeApp
             gestureListener.GestureBegin += OnGestureBegin;
             ContentPanel.Children.Add(alpha);
             //setup the animation
-            Storyboard sb = CreateAndApplyStoryboard(alpha, lookUp, hiveIndex);
+            Storyboard sb = CreateAndApplyStoryboard(alpha, lookUp, hiveIndex,millis);
             sb.Begin();
         }
 
         //Places the alphabet appropriately in either the hives or honey pots
-        public Storyboard CreateAndApplyStoryboard(UIElement targetElement, int [,] lookUp,int elementIndex)
+        public Storyboard CreateAndApplyStoryboard(UIElement targetElement, int [,] lookUp,int elementIndex, int millis)
         {
             Storyboard sb = new Storyboard();
 
@@ -70,7 +70,7 @@ namespace BumbleBeeApp
             {
                 From = 0,
                 To = lookUp[elementIndex,0],
-                Duration = new Duration(TimeSpan.FromMilliseconds(500)),
+                Duration = new Duration(TimeSpan.FromMilliseconds(millis)),
                 EasingFunction = new ExponentialEase()
             };
 
@@ -78,7 +78,7 @@ namespace BumbleBeeApp
             {
                 From = 0,
                 To = lookUp[elementIndex,1],
-                Duration = new Duration(TimeSpan.FromMilliseconds(500)),
+                Duration = new Duration(TimeSpan.FromMilliseconds(millis)),
                 EasingFunction = new ExponentialEase()
             };
 
@@ -127,7 +127,7 @@ namespace BumbleBeeApp
             //if the image was not moved to pot zone
             //but it was left some where in the cloud
             //((e.GetPosition(null).Y) != 480) it rectifies the problem of double click
-            //
+            //MessageBox.Show((e.GetPosition(null).Y > 385).ToString());
             if (((e.GetPosition(null).X) < 640) && ((e.GetPosition(null).Y) > 385) && ((e.GetPosition(null).Y) != 480) )
             {
                 //returns the value of the alphabet
@@ -232,7 +232,7 @@ namespace BumbleBeeApp
                 {
                     //Create and Send new alphabet to the hives
                     Alphabet tmpAlpha = new Alphabet(BumbleDictionary.RandomAlphabetGenerator());
-                    PlaceAlphabetOnScreen(ref tmpAlpha._img, Alphabet.hiveIndices, lstIndices.First());
+                    PlaceAlphabetOnScreen(ref tmpAlpha._img, Alphabet.hiveIndices, lstIndices.First(), 1000);
                     //Deletes the imags from the screen
                     alpha.Source = null;
                     lstIndices.RemoveAt(0);
@@ -247,7 +247,7 @@ namespace BumbleBeeApp
                 {
                     //Send the alphabet to the hives again
                     Alphabet tmpAlpha = new Alphabet(Convert.ToChar(alpha.Tag));
-                    PlaceAlphabetOnScreen(ref tmpAlpha._img, Alphabet.hiveIndices, lstIndices.First());
+                    PlaceAlphabetOnScreen(ref tmpAlpha._img, Alphabet.hiveIndices, lstIndices.First(), 1000);
                     //Deletes the imags from the screen
                     alpha.Source = null;
                     lstIndices.RemoveAt(0);
