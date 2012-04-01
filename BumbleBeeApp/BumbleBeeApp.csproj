@@ -127,6 +127,7 @@
     <Resource Include="Images\bee_logo.png" />
     <Resource Include="Images\bee_title.png" />
     <Resource Include="Images\fill_me.png" />
+    <Resource Include="Images\submit_fill.png" />
     <Content Include="raw_dictionary.txt" />
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
