@@ -146,8 +146,7 @@ namespace BumbleBeeApp
 
                     //added to list only if its a valid drag
                     lstIndices.Add(index);
-<<<<<<< HEAD
-=======
+
 
                     //showing the indices
                     MessageBox.Show(index.ToString());
@@ -155,7 +154,7 @@ namespace BumbleBeeApp
 
                     
 
->>>>>>> 5f9f8283d44b545be9a48c9dac3afd24cb3efa70
+
                 }
                 else
                 {
@@ -270,16 +269,17 @@ namespace BumbleBeeApp
         //Method to find the index of the empty hives
         private int GetIndex(double x, double y)
         { 
-<<<<<<< HEAD
-            //{200,362},{250,370},{213,410} , {400,330} , {380,282} , {437, 295} , {325, 405} , {379,413} ,{343,453} , 
-            //                            {450,382},{510,395},{468,430} , {585,330} , {645,340} , {603,375}
 
-=======
+            //{200,362},{250,370},{213,410} , {400,330} , {380,282} , {437, 295} , {325, 405} , {379,413} ,{343,453} , 
+            //{450,382},{510,395},{468,430} , {585,330} , {645,340} , {603,375}
+
+
             
             //the indices with their locations are
             //size of indice  width = 60 , && height = 50
+
+            //order changed to match with indices of alphabet.cs hives
             
->>>>>>> 5f9f8283d44b545be9a48c9dac3afd24cb3efa70
             if (x >= 144 && x < 204 && y >=180  && y < 230)
             {
                 return 0;
@@ -294,28 +294,28 @@ namespace BumbleBeeApp
             }// 2 (174,230)
             else if (x >=272  && x <332  && y >=223  && y <273 )
             {
-                return 3;
-            }// 3 (272,223)
+                return 6;
+            }// 3 (272,223) changed to 6
             else if (x >=332  && x <392  && y >=223  && y <273 )
             {
-                return 4;
-            }// 4 (332,223)
+                return 7;
+            }// 4 (332,223) changed to 7
             else if (x >=302  && x <363  && y >=273  && y <323 )
             {
-                return 5;
-            }// 5 (302,273)
+                return 8;
+            }// 5 (302,273) changed to 8
             else if (x >=329  && x <389  && y >= 104 && y <154 )
             {
-                return 6;
-            }// 6 (329,104)
+                return 4;
+            }// 6 (329,104) changed to 4
             else if (x >=389  && x <449  && y >=104  && y <154 )
             {
-                return 7;
-            }// 7 (389,104)
+                return 5;
+            }// 7 (389,104) changed to 5
             else if (x >=359  && x <419  && y >=154  && y <205 )
             {
-                return 8;
-            }// 8 (359,154)
+                return 3;
+            }// 8 (359,154)  changed to 3
             else if (x >=372  && x <432  && y >=201  && y <251 )
             {
                 return 9;
