@@ -91,6 +91,7 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="SplashScreenImage.jpg" />
     <Resource Include="Images\Letter A.png" />
     <Resource Include="Images\Letter B.png" />
     <Resource Include="Images\Letter C.png" />
@@ -129,7 +130,6 @@
     <Resource Include="Images\fill_me.png" />
     <Resource Include="Images\submit_fill.png" />
     <Content Include="raw_dictionary.txt" />
-    <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
