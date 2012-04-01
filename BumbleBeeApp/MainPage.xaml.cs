@@ -146,15 +146,6 @@ namespace BumbleBeeApp
 
                     //added to list only if its a valid drag
                     lstIndices.Add(index);
-
-
-                    //showing the indices
-                    MessageBox.Show(index.ToString());
-
-
-                    
-
-
                 }
                 else
                 {
@@ -232,7 +223,7 @@ namespace BumbleBeeApp
         {
             string wordToCheck = theGame.GetUserWord();
             
-            if (BumbleDictionary.IsValidWord(wordToCheck))
+            if (wordToCheck.Length >= 3 && BumbleDictionary.IsValidWord(wordToCheck))
             {
                 //Increment the score on the screen
                 theGame.UserScore += BumbleDictionary.WordScore(wordToCheck);
