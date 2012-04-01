@@ -22,7 +22,7 @@ namespace BumbleBeeApp
         //coordinates initital and final
         private double xInt, yInt, xFin, yFin;
         //counter for placing the alphabets
-        byte potNumber = 0 ;
+        byte potNumber = 0;
         int index = 0;
         List<int> lstIndices = new List<int>();
 
@@ -99,8 +99,7 @@ namespace BumbleBeeApp
             //taking initial coordinates
             xInt = e.GetPosition(null).X;
             yInt = e.GetPosition(null).Y;
-            index = getIndice(xInt,yInt);
-
+            index = GetIndex(xInt,yInt);
         }
 
         private void OnDragDelta(object sender, DragDeltaGestureEventArgs e)
@@ -123,13 +122,8 @@ namespace BumbleBeeApp
         {
             Image image = sender as Image;
             TranslateTransform transform = image.RenderTransform as TranslateTransform;
-            
-            //printing coordinates
-            //MessageBox.Show((xInt.ToString()) + "\t" + (yInt.ToString()));
 
-           
             // Move the image
-            
             //if the image was not moved to pot zone
             //but it was left some where in the cloud
             //((e.GetPosition(null).Y) != 480) it rectifies the problem of double click
@@ -150,10 +144,6 @@ namespace BumbleBeeApp
                     transform.Y += Alphabet.honeyPot[potNumber, 1];
                     potNumber++;
                     lstIndices.Add(index);
-                    MessageBox.Show(index.ToString());
-
-                    
-
                 }
                 else
                 {
@@ -233,36 +223,43 @@ namespace BumbleBeeApp
             
             if (BumbleDictionary.IsValidWord(wordToCheck))
             {
+                //Increment the score on the screen
                 theGame.UserScore += BumbleDictionary.WordScore(wordToCheck);
-                MessageBox.Show(wordToCheck + " is a valid word with a score of " + BumbleDictionary.WordScore(wordToCheck));
-                MessageBox.Show("current score " + theGame.UserScore);
                 //To delete the alphabets from the screen and generate the new ones
                 foreach (Image alpha in theGame.userWord)
                 {
+                    //Create and Send new alphabet to the hives
+                    Alphabet tmpAlpha = new Alphabet(BumbleDictionary.RandomAlphabetGenerator());
+                    PlaceAlphabetOnScreen(ref tmpAlpha._img, Alphabet.hiveIndices, lstIndices.First());
                     //Deletes the imags from the screen
                     alpha.Source = null;
+                    lstIndices.RemoveAt(0);
+                    --potNumber;
                 }
                 theGame.userWord.Clear();
             }
             else
             {
-                MessageBox.Show(wordToCheck + " isn't valid");
-                //Send the words to the hives again
+                //If we're here then the word entered by the user isn't valid
                 foreach (Image alpha in theGame.userWord)
                 {
+                    //Send the alphabet to the hives again
+                    Alphabet tmpAlpha = new Alphabet(Convert.ToChar(alpha.Tag));
+                    PlaceAlphabetOnScreen(ref tmpAlpha._img, Alphabet.hiveIndices, lstIndices.First());
                     //Deletes the imags from the screen
                     alpha.Source = null;
+                    lstIndices.RemoveAt(0);
+                    --potNumber;
                 }
                 theGame.userWord.Clear();
             }
         }
 
-        private int getIndice(double x, double y)
+        //Method to find the index of the empty hives
+        private int GetIndex(double x, double y)
         { 
             //{200,362},{250,370},{213,410} , {400,330} , {380,282} , {437, 295} , {325, 405} , {379,413} ,{343,453} , 
             //                            {450,382},{510,395},{468,430} , {585,330} , {645,340} , {603,375}
-
-
 
             if (x >= 144 && x < 204 && y >=180  && y < 230)
             {
@@ -325,10 +322,7 @@ namespace BumbleBeeApp
                 return 14;
             }
             else
-                return -99;
-
-
-            
+                return -99;   
         }
     }
 }
