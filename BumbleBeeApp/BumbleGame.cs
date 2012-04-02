@@ -18,6 +18,7 @@ namespace BumbleBeeApp
         public List<Alphabet> wordCloud;
         public List<Image> userWord;
         private int _userScore;
+        private string _userName;
         public int CurrentLevel { get; set; }
         public int UserScore {
             get
@@ -31,7 +32,20 @@ namespace BumbleBeeApp
                 NotifyPropertyChanged("UserScore");
             }
         }
-        public string UserName;
+        public string UserName{
+            get
+            {
+                return "howdy " + _userName + "!!!";
+            }
+        set
+        {
+            if (value != "")
+            {
+                _userName = value ;
+                NotifyPropertyChanged("UserName");
+            }
+        }
+        }
 
         //returns the word that the user has generated
         public string GetUserWord()
