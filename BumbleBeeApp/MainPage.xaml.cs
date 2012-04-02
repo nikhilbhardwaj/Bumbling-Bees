@@ -225,7 +225,9 @@ namespace BumbleBeeApp
             
             if (wordToCheck.Length >= 3 && BumbleDictionary.IsValidWord(wordToCheck))
             {
-                //Increment the score on the screen
+                //show tha animation
+				this.right.Begin();
+				//Increment the score on the screen
                 theGame.UserScore += BumbleDictionary.WordScore(wordToCheck);
                 //To delete the alphabets from the screen and generate the new ones
                 foreach (Image alpha in theGame.userWord)
@@ -245,7 +247,9 @@ namespace BumbleBeeApp
                 //If we're here then the word entered by the user isn't valid
                 foreach (Image alpha in theGame.userWord)
                 {
-                    //Send the alphabet to the hives again
+                    //show the animation
+					this.wrong.Begin();
+					//Send the alphabet to the hives again
                     Alphabet tmpAlpha = new Alphabet(Convert.ToChar(alpha.Tag));
                     PlaceAlphabetOnScreen(ref tmpAlpha._img, Alphabet.hiveIndices, lstIndices.First(), 1000);
                     //Deletes the imags from the screen
@@ -334,5 +338,13 @@ namespace BumbleBeeApp
             else
                 return -99;   
         }
+
+        private void image_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+        	// TODO: Add event handler implementation here. I am sorry bout this one, it got
+			//accidentally auto-generated
+        }
+
+        
     }
 }
