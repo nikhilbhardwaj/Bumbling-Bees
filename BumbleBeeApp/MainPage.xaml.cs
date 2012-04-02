@@ -37,7 +37,7 @@ namespace BumbleBeeApp
         public void InitializeGui()
         {
             // TODO get the users name and place it in the appropriate place MessageBox.Show("Enter Your Name");
-            theGame = new BumbleGame("Nikhil");
+            theGame = new BumbleGame("Janet");
             textBlock3.Text = "howdy " + theGame.UserName + "!!!";
             //To correctly place elements in the hives
             for (int i = 0; i < 15; ++i)
