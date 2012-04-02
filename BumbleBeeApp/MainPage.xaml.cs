@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.Threading;
+using Coding4Fun.Phone.Controls;
 
 
 namespace BumbleBeeApp
@@ -31,14 +32,24 @@ namespace BumbleBeeApp
             InitializeComponent();
             InitializeGui();
             DataContext = theGame;
+            this.Loaded += new RoutedEventHandler(MainPage_Loaded);
         }
 
+        //Called when the main page is loaded
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            //To get the user name
+            InputPrompt input = new InputPrompt();
+            input.Completed += input_Completed;
+            input.Title = "Who are you Player?";
+            input.Message = "Please enter your name to continue.";
+            input.Show();
+        }
         //to set up the initial user interface
         public void InitializeGui()
         {
             // TODO get the users name and place it in the appropriate place MessageBox.Show("Enter Your Name");
-            theGame = new BumbleGame("Janet");
-            textBlock3.Text = "howdy " + theGame.UserName + "!!!";
+            theGame = new BumbleGame("?");
             //To correctly place elements in the hives
             for (int i = 0; i < 15; ++i)
             {
@@ -93,6 +104,7 @@ namespace BumbleBeeApp
             return sb;
         }
 
+        //The gesture handling events
         private void OnGestureBegin(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
         {
             //  Image image = sender as Image;
@@ -333,6 +345,15 @@ namespace BumbleBeeApp
             }// 14 (534,198)
             else
                 return -99;   
+        }
+
+        //Handling the input for the username
+        private void input_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
+        {
+            //add some code here   
+            InputPrompt input = sender as InputPrompt;
+             theGame.UserName = input.Value;
+            input.Visibility = System.Windows.Visibility.Collapsed;
         }
     }
 }
