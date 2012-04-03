@@ -21,7 +21,8 @@ namespace BumbleBeeApp
         BumbleGame theGame;
         // Constructor
         //coordinates initital and final
-        private double xInt, yInt, xFin, yFin;
+        private double xInt, yInt, xFin, yFin,xLast;
+        //private double yLast;
         //counter for placing the alphabets
         byte potNumber = 0;
         int index = 0;
@@ -127,6 +128,7 @@ namespace BumbleBeeApp
             xFin = e.GetPosition(null).X;
             yFin = e.GetPosition(null).Y;
 
+            
 
         }
 
@@ -140,95 +142,100 @@ namespace BumbleBeeApp
             //but it was left some where in the cloud
             //((e.GetPosition(null).Y) != 480) it rectifies the problem of double click
             //MessageBox.Show((e.GetPosition(null).Y > 385).ToString());
-            if (((e.GetPosition(null).X) < 640) && ((e.GetPosition(null).Y) > 385) && ((e.GetPosition(null).Y) != 480))
+
+            if (e.GetPosition(null).X != xLast)
             {
-                //returns the value of the alphabet
-                //place it on Honey Pot
-                theGame.userWord.Add(image);
-                //I'm working on this part
-                //still trying to refine it some more...
-
-                if (!(xInt < 640 && yInt > 385))
+                if (((e.GetPosition(null).X) < 640) && ((e.GetPosition(null).Y) > 385) && ((e.GetPosition(null).Y) != 480))
                 {
-                    transform.X -= (xFin - 30);
-                    transform.X += Alphabet.honeyPot[potNumber, 0];
-                    transform.Y -= (yFin - 20);
-                    transform.Y += Alphabet.honeyPot[potNumber, 1];
-                    potNumber++;
+                    //returns the value of the alphabet
+                    //place it on Honey Pot
+                    theGame.userWord.Add(image);
+                    //I'm working on this part
+                    //still trying to refine it some more...
 
-                    //added to list only if its a valid drag
-                    lstIndices.Add(index);
+                    if (!(xInt < 640 && yInt > 385))
+                    {
+                        transform.X -= (xFin - 30);
+                        transform.X += Alphabet.honeyPot[potNumber, 0];
+                        transform.Y -= (yFin - 20);
+                        transform.Y += Alphabet.honeyPot[potNumber, 1];
+                        potNumber++;
+
+                        //added to list only if its a valid drag
+                        lstIndices.Add(index);
+                    }
+                    else
+                    {
+                        if (xFin < xInt)
+                        {
+                            transform.X += -(xFin - xInt + 30);
+                        }
+                        if (xFin > xInt)
+                        {
+                            transform.X += -(xFin - xInt - 30);
+                        }
+                        if (yFin < yInt)
+                        {
+                            transform.Y += -(yFin - yInt + 30);
+                        }
+                        if (yFin > yInt)
+                        {
+                            transform.Y += -(yFin - yInt - 30);
+                        }
+                    }
+
                 }
                 else
                 {
-                    if (xFin < xInt)
+                    //TODO return it back to its original position
+
+                    //to be done in two parts
+                    // 1) for X-axis
+                    // 2) for Y-axis
+
+                    //X-axis
+                    //if the move along X axis is greater than 32(considering the size of the image is 35) pixels
+                    //((e.GetPosition(null).Y) != 480) it rectifies the problem of double click
+                    if (Math.Abs((xFin - xInt)) >= 32 && ((e.GetPosition(null).Y) != 480))
                     {
-                        transform.X += -(xFin - xInt + 30);
+                        if (xFin < xInt)
+                        {
+                            transform.X += -(xFin - xInt + 30);
+                        }
+                        if (xFin > xInt)
+                        {
+                            transform.X += -(xFin - xInt - 30);
+                        }
                     }
-                    if (xFin > xInt)
+                    else if ((xFin - xInt) == 0)
                     {
-                        transform.X += -(xFin - xInt - 30);
+                        //DONOTHING
                     }
-                    if (yFin < yInt)
+
+                    //Y-axis
+                    //if the move along Y axis is greater than 32 pixels
+                    //((e.GetPosition(null).Y) != 480) it rectifies the problem of double click
+                    if (Math.Abs((yFin - yInt)) >= 32 && ((e.GetPosition(null).Y) != 480))
                     {
-                        transform.Y += -(yFin - yInt + 30);
+                        if (yFin < yInt)
+                        {
+                            transform.Y += -(yFin - yInt + 25);
+                        }
+                        if (yFin > yInt)
+                        {
+                            transform.Y += -(yFin - yInt - 20);
+                        }
                     }
-                    if (yFin > yInt)
+                    else if ((yFin - yInt) == 0)
                     {
-                        transform.Y += -(yFin - yInt - 30);
+                        //DONOTHING
                     }
+
                 }
 
+                xLast = xFin;
+                //yLast = yFin;
             }
-            else
-            {
-                //TODO return it back to its original position
-
-                //to be done in two parts
-                // 1) for X-axis
-                // 2) for Y-axis
-
-                //X-axis
-                //if the move along X axis is greater than 32(considering the size of the image is 35) pixels
-                //((e.GetPosition(null).Y) != 480) it rectifies the problem of double click
-                if (Math.Abs((xFin - xInt)) >= 32 && ((e.GetPosition(null).Y) != 480))
-                {
-                    if (xFin < xInt)
-                    {
-                        transform.X += -(xFin - xInt + 30);
-                    }
-                    if (xFin > xInt)
-                    {
-                        transform.X += -(xFin - xInt - 30);
-                    }
-                }
-                else if ((xFin - xInt) == 0)
-                {
-                    //DONOTHING
-                }
-
-                //Y-axis
-                //if the move along Y axis is greater than 32 pixels
-                //((e.GetPosition(null).Y) != 480) it rectifies the problem of double click
-                if (Math.Abs((yFin - yInt)) >= 32 && ((e.GetPosition(null).Y) != 480))
-                {
-                    if (yFin < yInt)
-                    {
-                        transform.Y += -(yFin - yInt + 25);
-                    }
-                    if (yFin > yInt)
-                    {
-                        transform.Y += -(yFin - yInt - 20);
-                    }
-                }
-                else if ((yFin - yInt) == 0)
-                {
-                    //DONOTHING
-                }
-
-            }
-
-
         }
 
         private void image25_Tap(object sender, System.Windows.Input.GestureEventArgs e)
