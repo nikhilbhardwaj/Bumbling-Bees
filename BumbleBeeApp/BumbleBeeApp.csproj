@@ -104,6 +104,7 @@
     </Content>
     <Content Include="SplashScreenImage.jpg" />
     <Resource Include="beebee.png" />
+    <Resource Include="correct.png" />
     <Resource Include="Images\Letter A.png" />
     <Resource Include="Images\Letter B.png" />
     <Resource Include="Images\Letter C.png" />
